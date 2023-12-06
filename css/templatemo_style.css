@@ -121,6 +121,10 @@ ul { margin: 0; }
   height: 80%;
 }
 .templatemo-brown { color: #865701; }
+.templatemo-brown img { 
+  color: #865701;
+  width: 20px;
+  float: left; }
 .templatemo-gold { color: #b28601; }
 .templatemo-btn {
   background: #865701;
@@ -357,6 +361,9 @@ a#mobile_menu {
 .templatemo-service-image {
   display: block;
   float: left;
+}
+.templatemo-service-container img{
+  width: 50px;
 }
 .templatemo-service-container { margin-top: 15px; }
 .templatemo-service-content { margin-left: 90px; }
