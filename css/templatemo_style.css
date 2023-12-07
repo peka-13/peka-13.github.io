@@ -287,9 +287,11 @@ a#mobile_menu {
 /* 3. Home Styles
 --------------------------------------*/
 #home { padding-top: 197px; }
-.templatemo-home-image-container {
+.templatemo-home-image{
   display: inline-block;
   position: relative;
+  width: 85%;
+  border-radius: 40px;
 }
 .templatemo-image-overlay {
   background: rgba(51,51,51,0.9); /* OLD - iOS 6-, Safari 3.1-6 */
