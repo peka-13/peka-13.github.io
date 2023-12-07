@@ -237,6 +237,7 @@ a:focus {
   right: -1500px;
   display: none;
   overflow: auto;
+  border-radius: 15px;
 }
 #responsive-menu ul {
   padding: 0;
@@ -272,6 +273,7 @@ a#mobile_menu {
   text-align: center;
   line-height: 50px;
   position: fixed;
+  float: left;
   top: 15px;
   right: 15px;
   z-index: 5500;
@@ -399,6 +401,10 @@ form { width: 430px; }
   width: 52px;
   height: 44px; 
 }
+.icons {
+  color: white;
+  margin-right: 15px;
+}
 #facebook { background: url('../images/social-icons.png') -5px 0; }
 #twitter { background: url('../images/social-icons.png') -59px 0; }
 #google { background: url('../images/social-icons.png') -113px 0; }
@@ -445,7 +451,7 @@ have a fixed width and height (but it's not required).
 .jcarousel li {
     /* Required only for block elements like <li>'s */
     float: left;
-    width: 275px;
+    
 }
 
 .templatemo-team .jcarousel-control-prev { left: 0; }
@@ -492,7 +498,14 @@ have a fixed width and height (but it's not required).
 .jcarousel-control-next:focus {
   color: #865701;
 }
-.templatemo-product-img { margin-top: 30px; }
+.templatemo-product-img { margin-top: 30px; 
+aspect-ratio: 3/2;
+object-fit: contain;
+float: left;
+margin-right: 75px;
+margin-left: 75px;
+align-items: center;
+}
 
 /* 7. Media Queries
 --------------------------------------*/

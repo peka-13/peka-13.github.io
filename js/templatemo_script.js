@@ -61,17 +61,17 @@
     });
 
     //mobile menu and desktop menu
-    $("#responsive-menu").css({"right":-1500});
+    $("#responsive-menu").css({"left":-1500});
     $("#mobile_menu").click(function(){
         $("#responsive-menu").show();
         
-        if($("#responsive-menu").css("right") == "-1500px") 
+        if($("#responsive-menu").css("left") == "-1500px") 
         {
-          $("#responsive-menu").animate({ "right":0 }, 400);
+          $("#responsive-menu").animate({ "left":0 }, 400);
         }
         else
         {
-          $("#responsive-menu").animate({ "right":-1500 }, 400);
+          $("#responsive-menu").animate({ "left":-1500 }, 400);
         }
         
         return false;
@@ -81,7 +81,7 @@
     });
 
     $("#responsive-menu a").click(function(){
-      $("#responsive-menu").animate({ "right":-1500 }, 400);
+      $("#responsive-menu").animate({ "left":-1500 }, 400);
     });
 
 })(jQuery);
@@ -89,7 +89,7 @@
 function changeNavMenu(){
   if($(window).width()>767)
   {
-    $("#responsive-menu").css({"right":-1500});
+    $("#responsive-menu").css({"left":-1500});
 
     if ($(window).scrollTop() > 1)
     {
