@@ -58,6 +58,9 @@ ul { margin: 0; }
 .margin-top-15 { margin-top: 15px; }
 .margin-top-30 { margin-top: 30px; }
 .padding-30 { padding: 30px; }
+.templatemo-section {
+  margin-bottom: 200px;
+}
 .templatemo-section-title { display: block; }
 .templatemo-home-image, 
 .templatemo-image-overlay,
@@ -176,6 +179,7 @@ ul { margin: 0; }
   right: 0;
   -webkit-transition: all 0.3s ease;
           transition: all 0.3s ease;
+          
 }
 .templatemo-site-header.sticky .templatemo-nav { bottom: 6px; }
 .ie11 .templatemo-site-header.sticky .templatemo-nav,
@@ -193,6 +197,20 @@ https://stackoverflow.com/questions/952861/targeting-only-firefox-with-css/95349
               transition: all 0.3s ease;
     }
     .templatemo-site-header.sticky .templatemo-nav { bottom: 8px; }
+}
+.templatemo-nav ul ul{
+  display: none;
+  width: auto;
+}
+.templatemo-nav ul ul li:first-child{
+}
+.templatemo-nav li:hover ul {
+  display: block;
+  position:absolute;
+  padding:0;
+  background-color: #000;
+  border-radius: 15px;
+
 }
 .templatemo-nav ul li {
   float: left;
@@ -286,12 +304,14 @@ a#mobile_menu {
 
 /* 3. Home Styles
 --------------------------------------*/
-#home { padding-top: 197px; }
+#home { padding-top: 197px;
+  margin-bottom: 200px; }
 .templatemo-home-image{
   display: inline-block;
   position: relative;
   width: 85%;
   border-radius: 40px;
+ 
 }
 .templatemo-image-overlay {
   background: rgba(51,51,51,0.9); /* OLD - iOS 6-, Safari 3.1-6 */
@@ -509,6 +529,36 @@ margin-left: 75px;
 align-items: center;
 }
 
+.black_overlay{ 
+  display: none; 
+  position: absolute; 
+  top: 0%; 
+  left: 0%; 
+  width: 100%; 
+  height: 100%; 
+  background-color: black; 
+  z-index:1001; 
+  -moz-opacity: 0.8; 
+  opacity:.80; 
+  filter: alpha(opacity=88); 
+  border-radius: 15px;
+} 
+.white_content { 
+  display: none; 
+  position: absolute; 
+ 
+  
+ 
+  width: 85%; 
+  height: 85%; 
+ 
+  border: 10px solid rgb(207, 127, 28); 
+  background-color: rgb(255, 255, 255); 
+  border-radius: 15px;
+  z-index:1002; 
+  overflow: auto; 
+}
+
 /* 7. Media Queries
 --------------------------------------*/
 @media screen and (max-width: 1199px) {
@@ -554,7 +604,9 @@ align-items: center;
     height: auto;
     padding: 15px;
   }
-  .templatemo-section { margin-top: 50px; }
+  .templatemo-section { 
+    margin-bottom: 300px;
+    margin-top: 50px; }
 }
 
 @media screen and (max-width: 767px) {
@@ -597,9 +649,10 @@ align-items: center;
   .templatemo-product-container {
     padding-top: 8px;
     padding-bottom: 8px;
+    height: 250px;
   }
   .templatemo-product-img {
     margin-top: 20px;
-    width: 75%;
+    width: 55%;
   }
 }
