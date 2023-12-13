@@ -150,3 +150,37 @@ $(document).ready(function()
 
     detectIE();
 });
+   function showModal() {
+        var lightbox = document.getElementById('light');
+        var overlay = document.getElementById('fade');
+
+        // Añade la clase de animación al abrir
+        lightbox.classList.add('animated');
+        overlay.classList.add('animated');
+
+        lightbox.style.display = 'block';
+        overlay.style.display = 'block';
+
+        // Espera un breve momento y luego quita la clase de animación (entrada)
+        setTimeout(function() {
+            lightbox.classList.remove('animated');
+            overlay.classList.remove('animated');
+        }, 500); // Ajusta este valor para que coincida con la duración de la animación
+    }
+
+    function closeModal() {
+        var lightbox = document.getElementById('light');
+        var overlay = document.getElementById('fade');
+
+        // Añade la clase de animación al cerrar
+        lightbox.classList.add('fadeOut');
+        overlay.classList.add('fadeOut');
+
+        // Espera a que termine la animación de salida y luego oculta el modal y el fondo negro
+        setTimeout(function () {
+            lightbox.classList.remove('fadeOut');
+            overlay.classList.remove('fadeOut');
+            lightbox.style.display = 'none';
+            overlay.style.display = 'none';
+        }, 500); // Ajusta este valor para que coincida con la duración de la animación
+    }

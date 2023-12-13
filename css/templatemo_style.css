@@ -35,6 +35,7 @@ h3 {
   font-weight: 600;
   margin-top: 0;
 }
+a {color:#b28601}
 a:hover, a:focus { 
   color: #b28601;
   text-decoration: none; 
@@ -166,6 +167,7 @@ ul { margin: 0; }
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 30px;
+  
 }
 .templatemo-site-name span {
   display: inline-block;
@@ -175,7 +177,7 @@ ul { margin: 0; }
 .templatemo-site-name span:first-child { font-size: 20px; }
 .templatemo-site-header .templatemo-nav {
   position: absolute;
-  bottom: 14px;
+  bottom: 10px;
   right: 0;
   -webkit-transition: all 0.3s ease;
           transition: all 0.3s ease;
@@ -247,7 +249,7 @@ a:focus {
 }
 #responsive-menu {
   top: 0;
-  width: 250px;
+  width: 55%;
   height: 100%;
   background: rgba(116, 106, 64, 0.4);
   position: fixed;
@@ -256,6 +258,7 @@ a:focus {
   display: none;
   overflow: auto;
   border-radius: 15px;
+  float: left;
 }
 #responsive-menu ul {
   padding: 0;
@@ -291,8 +294,7 @@ a#mobile_menu {
   text-align: center;
   line-height: 50px;
   position: fixed;
-  float: left;
-  top: 15px;
+  bottom: 15px;
   right: 15px;
   z-index: 5500;
 }
@@ -301,6 +303,8 @@ a#mobile_menu {
   background: #333;
   text-decoration: none;
 }
+
+
 
 /* 3. Home Styles
 --------------------------------------*/
