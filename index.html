@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Unfiltered - Próximamente</title>
 
-  <!-- Bootstrap core -->
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Fuente digital -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background-color: #121212;
+      background-color: #000;
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -35,44 +37,82 @@
       font-weight: bold;
     }
 
-    .dot {
-      color: #1da1f2;
-    }
-
     p {
-      color: #ccc;
+      color: #aaa;
       font-size: 1.2rem;
       margin-top: 1rem;
+    }
+
+    /* DIGITAL STYLE */
+
+    .digital-label {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    .digital-counter {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: 8px;
+      color: #ffffff;
+      text-shadow:
+        0 0 5px rgba(255,255,255,0.5),
+        0 0 15px rgba(255,255,255,0.3);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .digital-counter.flash {
+      transform: scale(1.05);
+      opacity: 0.85;
+    }
+
+    .progress-box {
+      margin-top: 2.5rem;
     }
 
     footer {
       width: 100%;
       text-align: center;
       padding: 1rem 0;
-      color: #888;
+      color: #555;
     }
 
     footer a {
-      color: #888;
+      color: #555;
       text-decoration: none;
     }
 
     .social-icons a {
       margin: 0 0.5rem;
-      color: #888;
+      color: #555;
       transition: color 0.3s ease;
     }
 
     .social-icons a:hover {
-      color: #1da1f2;
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
   <main>
-    <h1>Unfiltered<span class="dot">.</span></h1>
-    <p>Una nueva forma de compartir, sin filtros. Próximamente.</p>
+    <h1>Unfiltered.</h1>
+    <p>New way to share, unfiltered</p>
+
+    <!-- CUENTA ATRÁS DIGITAL -->
+    <div class="progress-box">
+      <div class="digital-label">LAUNCH IN</div>
+      <div id="countdown" class="digital-counter">00 : 00 : 00 : 00</div>
+    </div>
+
+    <!-- CONTADOR LOGOS -->
+    <div class="progress-box">
+      <div class="digital-label">LOGOS FOUND</div>
+      <div id="logoCounter" class="digital-counter">00 / 10</div>
+    </div>
   </main>
 
   <footer>
@@ -84,11 +124,65 @@
         <i class="bi bi-tiktok" style="font-size: 1.5rem;"></i>
       </a>
     </div>
-    <a href="/privacy.html">Política de Privacidad</a>
+    <a href="/privacy.html">Privacy Policy</a>
   </footer>
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7363750033992721"
-    crossorigin="anonymous"></script>
+  <!-- FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB8Wp92bDiGbGd7YKY5nt9yuDLGFjnLKCs",
+      authDomain: "unfiltered-bcn.firebaseapp.com",
+      projectId: "unfiltered-bcn",
+      storageBucket: "unfiltered-bcn.firebasestorage.app",
+      messagingSenderId: "683581108377",
+      appId: "1:683581108377:web:e1964dc15beac36f858808"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const progressRef = doc(db, "game", "progress");
+
+    onSnapshot(progressRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const found = docSnap.data().found;
+        const counter = document.getElementById("logoCounter");
+        const formatted = String(found).padStart(2, '0');
+
+        counter.classList.add("flash");
+        counter.innerText = `${formatted} / 10`;
+
+        setTimeout(() => {
+          counter.classList.remove("flash");
+        }, 200);
+      }
+    });
+
+    /* CUENTA ATRÁS */
+    const launchDate = new Date("2026-08-01T18:00:00+02:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdownEl.innerText = "LIVE";
+        return;
+      }
+
+      const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      const hours = String(Math.floor((distance / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+      const minutes = String(Math.floor((distance / 1000 / 60) % 60)).padStart(2, '0');
+      const seconds = String(Math.floor((distance / 1000) % 60)).padStart(2, '0');
+
+      countdownEl.innerText = `${days} : ${hours} : ${minutes} : ${seconds}`;
+    }, 1000);
+  </script>
+
 </body>
 </html>
